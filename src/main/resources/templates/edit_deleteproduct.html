@@ -1,0 +1,50 @@
+
+
+
+             <div class="flex-container">
+             <header>
+            <h1>Pick n Pay online</h1>
+            <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div>
+                            <ul class="nav navbar-nav navbar-right">
+                                <a ng-href="#!/home" class="btn btn-default submit-button" role="button" ng-click="">Log out</a>    
+                               
+                               
+                            </ul>
+                              <ul class="nav navbar-nav navbar-left">
+                               
+                                  <li><a ng-href="#!/admin"><span class="glyphicon glyphicon-align-left"></span>Back to administration page</a></li> 
+                               
+                                  
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+          </header>
+                 <article>
+                    
+
+                     <ul class="list-group test-center">
+                         <li class="col-lg-4 col-sm-4 col-lg-4 list-group-item" ng-repeat="p in products">
+                             
+                            <p>Product name: {{p.name}}</p>
+                             <p>Product description :{{p.description}}</p>
+                             <p>Product price :R {{p.price}}</p>
+                             <p>Product category:{{p.category}}</p>
+                             
+                             <img ng-src="{{p.image}}" width="100" height="100"/>
+                             <a class="btn btn-default submit-button" role="button" ng-click="">Edit</a>
+                             <a class="btn btn-default submit-button" role="button" ng-click="removeProduct(p.id)">Delete</a>
+                             
+                             <!--   <img src="img/avatar_2x.png" alt=""/>!-->
+                              
+                         </li>
+                         
+                     </ul>     
+                     </article>
+                 
+
+          <footer>Copyright &copy; Prince.Pick n Pay</footer>
+          </div>
+

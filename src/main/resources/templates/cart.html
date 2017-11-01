@@ -1,0 +1,138 @@
+
+             <div class="flex-container">
+             <header>
+            <h1>Pick n Pay online</h1>
+             <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+                               
+                               
+                            </ul>
+                            
+                            
+                            
+                            <ul class="nav navbar-nav navbar-left">
+                                <li><a ng-href="#!/theproduct"><span class="glyphicon glyphicon-align-left"></span> Back to products</a></li>                                
+                            </ul>
+                             <ul class="nav navbar-nav navbar-left">
+                                <li><a ng-href="#!/home"><span class="glyphicon glyphicon-align-left"></span> Home</a></li>                                
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+     
+              </header>
+
+          
+
+         <article class="article">
+              <div>
+                    <h3>
+                        <b>
+                            Shopping Cart
+
+                        </b>
+                    </h3>
+
+                    <br/><br/>
+
+                    <form ng-submit="">     
+
+                        <div class="table-responsive ">
+                            <table class="table ">
+                                <thead>
+                                    <tr>
+                                        <td></td>
+                                        <td class="image">Name</td>
+                                        <td class="description">Description</td>
+                                        <td class="price">Price</td>
+                                        <td class="quantity">Quantity</td>
+                                        <td class="total">Sub Total</td>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="inlineproduct in cart" >
+                                        <td class="">
+                                            <input type="checkbox"  ng-checked="changeState(selectedList, inlineproduct)" ng-click="addAndRemove(selectedList, LineProduct)" />
+                                        </td>
+                                       <td class="">
+                                            
+                                            <p>{{inlineproduct.name}}</p>
+                                        </td>
+                                        <td class="">
+                                            <p> {{inlineproduct.description}}</p>  
+                                           
+                                        </td>
+                                        <td class="">
+                                            <p>{{inlineproduct.category}}</p> 
+                                        </td>
+                                        <td class="cart_price">
+                                            <p>R {{inlineproduct.price| number : 2}}</p>
+                                        </td>
+                                        <td class="">
+                                            <div class="cart_quantity_button">
+                                                <b><a  ng-click="addQuantity(inlineproduct.id)">++</a></b>
+                                                <input class="cart_quantity_input" type="text" name="quantity" ng-disabled="true" ng-value=" {{LineProduct.QUANTITY}}" autocomplete="off" size="2"/>
+                                                <b><a ng-click="subtractQuantity(inlineproduct.id)">--</a></b>
+                                            </div>
+                                        </td>
+                                        <td class="">
+                                            <p class=""  >R {{inlineproduct.price * inlineproduct.quantity | number : 2}}</p>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div>
+                                <a class="btn btn-default submit-button" role="button" ng-click="removeSelected(selectedList)">Remove selected products</a>
+                            </div>
+                            
+                            <!--Cart Summary!-->
+                               <div class="table-responsive ">
+                        <table class="table cartTable" style="margin-top: 12%">
+                            <thead>
+                                <tr class="">
+                                    <td colspan="2">
+                                        <h3>
+                                            <b>
+                                                Cart Summary
+                                            </b>
+                                        </h3>
+                                    </td>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr >
+                                    <td class="">
+                                        <p>Order Total :</p> 
+                                    </td>
+                                    <td class="">
+                                        <p ng-init="calcTotal(cart)">R {{total | number : 2}}</p>
+                                    </td>
+                                </tr>
+                                <tr class="">
+                                   
+                                    <td colspan="2"><input  ng-click="checkout()" type="submit" value="Checkout" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+             
+                            
+                            
+                        </div>
+                    </form> 
+                </div>
+             
+                 
+      
+          </article>
+
+          <footer>Copyright &copy; Prince.Pick n Pay</footer>
+          </div>
+

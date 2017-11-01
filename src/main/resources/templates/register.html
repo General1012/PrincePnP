@@ -1,0 +1,179 @@
+
+             <div class="flex-container">
+             <header>
+            <h1>Pick n Pay online</h1>
+           <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div>
+                            <ul class="nav navbar-nav navbar-left">
+                                <li><a ng-href="#!/home"><span class="glyphicon glyphicon-align-left"></span> Home</a></li>                                
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+          </header>
+
+        
+
+         <article class="article">
+        <div class="row register-form"   >
+        <div class="col-md-8 col-md-offset-2">
+            <form class="form-horizontal custom-form"  >
+                <h1>Register </h1>
+                <div class="row tableRow">
+                                    <div class="col-md-3">First Name </div>
+                                    <div class="col-md-5 tableColumn">
+                                        <input type="text" class="form-control " ng-model="user.firstname" ng-required="true" />
+                                    </div>
+                                </div>
+                                <div class="row tableRow">
+                                    <div class="col-md-3">Last Name </div>
+                                    <div class="col-md-5">
+                                        <input type="text" ng-model="user.lastname" class="form-control" ng-required="true" />
+                                    </div>
+                                </div>
+                                <div class="row tableRow">
+                                    <div class="col-md-3">Email </div>
+                                    <div class="col-md-5">
+                                        <input type="email" id="email" ng-model="user.email" ng-value=" {{user.email}}"  class="form-control" ng-required="true" />
+                                    </div>
+                                </div>
+                            
+                                <div class="row tableRow">
+                                    <div class="col-md-3">Password </div>
+                                    <div class="col-md-5">
+                                        <input type="password"  ng-model="user.password" class="form-control"  required="true"  />
+                                    </div>
+                                </div>
+                               
+                                <div class="row tableRow">
+                                    <div class="col-md-3">Cell Number </div>
+                                    <div class="col-md-5">
+                                        <input type="text" name="cellnumber" ng-model="user.cellphonNumber" class="form-control"  required="true" ng-minlength="10" ng-maxlength="10"/>
+                                    </div>
+                                </div>
+                                  <div class="row tableRow">
+                                    <div class="col-md-3">Physical Address </div>
+                                    <div class="col-md-5">
+                                        <input type="text"  ng-model="user.address" class="form-control"  required="true" />
+                                    </div>
+                                </div>
+                                <div class="row tableRow">
+                                    <div class="col-md-3">Security Question </div>
+                                    <div class="col-md-5">
+                                        <input type="text" ng-model="user.securityQuestuion" class="form-control" required="true" />
+                                    </div>
+                                </div>
+                                <div class="row tableRow">
+                                    <div class="col-md-3">Answer </div>
+                                    <div class="col-md-5">
+                                        <input type="password" class="form-control" ng-model="user.answer" required="true" />
+                                    </div>
+                                </div>
+                                <div class="row tableRow">
+                                    <div class="col-md-3">Gender </div>
+                                    <div class="col-md-5">
+                                        <select ng-model="user.gender"  style="width: 35%;">
+                                            <option ng-if="user.gender === undefined || user.gender === '' ">----</option>
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row tableRow">
+                                    <div class="col-md-3">Birthday </div>
+                                    <div class="col-md-7">
+                                        <select ng-model="day" id="day" style="width: 20%;" >
+                                            
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                            <option>7</option>
+                                            <option>8</option>
+                                            <option>9</option>
+                                            <option>10</option>
+                                            <option>11</option>
+                                            <option>12</option>
+                                            <option>13</option>
+                                            <option>14</option>
+                                            <option>15</option>
+                                            <option>16</option>
+                                            <option>17</option>
+                                            <option>18</option>
+                                            <option>19</option>
+                                            <option>20</option>
+                                            <option>21</option>
+                                            <option>22</option>
+                                            <option>23</option>
+                                            <option>24</option>
+                                            <option>25</option>
+                                            <option>26</option>
+                                            <option>27</option>
+                                            <option>28</option>
+                                            <option>29</option>
+                                            <option>30</option>
+                                            <option>31</option>
+
+                                        </select> 
+                                        <select ng-model="month"  id="month" style="width: 50%;" >
+                                            
+                                            <option>January</option>
+                                            <option>February</option>
+                                            <option>March</option>
+                                            <option>April</option>
+                                            <option>May</option>
+                                            <option>June</option>
+                                            <option>July</option>
+                                            <option>August</option>
+                                            <option>September</option>
+                                            <option>October</option>
+                                            <option>November</option>
+                                            <option>December</option>
+                                        </select> 
+                                        <select ng-model="year"  id="year" style="width: 27%;" >
+                                            
+                                            <option>2001</option>
+                                            <option>2000</option>
+                                            <option>1999</option>
+                                            <option>1998</option>
+                                            <option>1997</option>
+                                            <option>1996</option>
+                                            <option>1995</option>
+                                            <option>1994</option>
+                                            <option>1993</option>
+                                            <option>1992</option>
+                                            <option>1991</option>
+                                            <option>1990</option>
+                                            <option>1989</option>
+                                            <option>1988</option>
+                                            <option>1987</option>
+                                            <option>1986</option>
+                                            <option>1985</option>
+                                            <option>1984</option>
+                                            <option>1983</option>
+                                            <option>1982</option>
+                                            <option>1981</option>
+                                            <option>1980</option>
+                                        </select> 
+                                    </div>
+                                </div>
+                                <div class="row tableRow">
+                                    <div class="col-md-3 ">
+                                          <a class="btn btn-default submit-button" role="button" ng-click="register()">Register</a>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="text"  ng-model="user.dateOfBirth" hidden="" />
+                                    </div>
+                                </div>
+            </form>         
+        </div>
+    </div>
+          </article>
+
+          <footer>Copyright &copy; Prince.Pick n Pay</footer>
+          </div>
+
+              

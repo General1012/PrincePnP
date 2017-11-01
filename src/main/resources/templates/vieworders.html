@@ -1,0 +1,95 @@
+
+             <div class="flex-container">
+             <header>
+            <h1>Pick n Pay online</h1>
+           <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div>
+                           <ul class="nav navbar-nav navbar-left">
+                             <li><a ng-href="#!/admin"><span class="glyphicon glyphicon-align-left"></span>Back to administration page</a></li> 
+                                                                 
+                            </ul>
+                              <ul class="nav navbar-nav navbar-right">
+                               <a ng-href="#!/home" class="btn btn-default submit-button" role="button" ng-click="">Log out</a>                             
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+          </header>
+
+        
+
+         <article class="article">
+        <div>
+                    <h3>
+                        <b>
+                            All orders
+
+                        </b>
+                    </h3>
+
+                    
+
+                    <form ng-submit="">     
+
+                        <div class="table-responsive ">
+                               <table class="table ">
+                                <thead>
+                                    <tr>
+                                        
+                                        <td>Order id</td>
+                                        <td>Client name</td>
+                                        <td>Client order date</td>                                                                                                            
+                                        <td>Client cell phone number</td>
+                                        <td>Order destination</td>  
+                                        <td>Ordered products</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="order in orders" >
+                                    
+                                         
+                                       <td class="">                                            
+                                           {{order.id}}
+                                        </td>
+                                         <td class="">                                            
+                                           {{order.userName}}
+                                        </td>
+                                        <td class="">
+                                          {{order.clientOrderDate}}
+                                        </td>
+                                       
+                                        
+                                         <td class="">                                            
+                                         
+                                          {{order.userCellPhone}}
+                                       </td>
+
+                                        <td class="">                                            
+                                         
+                                          {{order.destination}}
+                                       </td>
+                                        <td  ng-repeat="jj in order.lineProducts">
+                                             
+                                            
+                                            {{jj.name}}
+                                            <img ng-src="{{jj.image}}" width="70" height="70"/>
+                                            
+                                           
+                                          
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>                    
+                        </div>
+                        
+                        
+                        
+                    </form> 
+                </div> 
+               
+          </article>
+
+          <footer>Copyright &copy; Prince.Pick n Pay</footer>
+          </div>

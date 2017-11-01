@@ -1,0 +1,147 @@
+MixoApp.controller("adminController",function($http,$scope,$location,$rootScope){
+    //alert("admin cotrol");
+   $scope.loginName = localStorage.getItem('loginName');
+   $rootScope.gotoAdmin= function(url){
+           $location.path(url);
+        };
+        
+        $scope.adminLogin = function()
+           {
+               
+               $http.post("/admin",$scope.admin).then(function(response){
+                   
+                   $scope.name = response.data.admin.name;
+                   $scope.admin = response.data.admin;
+                        alert("admin log in");            
+                   if(response.data.status ==="OK")
+                   {
+                       alert(response.data.message);                       
+                       $rootScope.gotoAdmin("/admin/products");
+                       
+                       localStorage.setItem('loginName',$scope.name);
+                   }
+               });
+           };
+           $scope.removeProduct = function(id){
+               $http.post("/admin/deleteProduct/" + id).then(function(response){                 
+                   alert("Are you sure you want to delete product?");
+                   if(response.data.status ==="OK")
+                   {
+                       alert(response.data.message);
+                        $rootScope.gotoAdmin("/admin/products");
+                   }
+               });
+           };
+           
+           
+           
+         
+$scope.image= null;
+$http.defaults.headers.post["Content-Type"] = "application/json";
+var name =$scope.name;
+var price =$scope.price;
+var brand =$scope.brand;
+var quantity=$scope.quantity;
+var imageCopy = null;
+var image = null;
+var handleImageSelect = function(evt)
+{
+    var files = evt.target.files;
+    var file = files[0];
+
+    if (files && file) {
+	var reader = new FileReader();
+	reader.onload = function(readerEvt) {
+	var binaryString = readerEvt.target.result;
+	imageCopy = btoa(binaryString);
+	image = 'data:image/octet-stream;base64,'+ imageCopy;    
+	$scope.image=image;
+	//console.log($scope.image);
+	};
+        reader.readAsBinaryString(file);	
+    }
+};
+if (window.File && window.FileReader && window.FileList && window.Blob) {
+	document.getElementById('filePickerImage').addEventListener('change', handleImageSelect, false);
+}
+ else {
+    alert('The File APIs are not fully supported in this browser.');
+}
+
+    $scope.addProduct = function(){
+
+        $http.post("/admin/addproduct",{
+                        
+            name: $scope.name,
+            price: $scope.price,
+            brand: $scope.brand,
+            quantity: $scope.quantity,     
+            image:  $scope.image   
+                
+        }).then(function(response){                 
+
+                   if(response.data.status ==="OK")
+                   {
+                       alert(response.data.message);
+                       $rootScope.gotoAdmin("/admin/products");
+                   }
+               });
+           };
+           
+           $scope.displayProducts = function(url){ 
+               $http.post(url).then(function(response){
+                  $scope.diplays = response.data.products; 
+               });
+               
+           };
+});  
+
+/////////////////////
+@RequestMapping(method = RequestMethod.POST, value = "/admin/deleteProduct/{id}")
+    public HashMap remove(@PathVariable("id") Long id){
+        HashMap map = productService.deleteProduct(id);
+        return map;
+    }
+//////////
+
+
+
+    public HashMap deleteProduct(Long Id){
+       HashMap map = new HashMap();
+       String message = "Product Removed.";
+       String status = "OK";
+        productRepository.delete(Id);
+        
+       map.put("status", status);
+        map.put("message", message);
+        return map;
+    }
+///////////////////////////
+    <input type="file" id="filePickerImage" name="image" ng-model="filePickerImage" accept="image/png/jpeg"  />
+////////////////////
+ $scope.addProduct = function(){
+
+        $http.post("/admin/addproduct",{
+                        
+            name: $scope.name,
+            price: $scope.price,
+            brand: $scope.brand,
+            quantity: $scope.quantity,     
+            image:  $scope.image   
+                
+        }).then(function(response){                 
+
+                   if(response.data.status ==="OK")
+                   {
+                       alert(response.data.message);
+                       $rootScope.gotoAdmin("/admin/products");
+                   }
+               });
+           };
+           
+           $scope.displayProducts = function(url){ 
+               $http.post(url).then(function(response){
+                  $scope.diplays = response.data.products; 
+               });
+               
+           };
